@@ -12,3 +12,9 @@ class Tcp:
         self.flag_syn = (offset_reserved_flags & 2) >> 1
         self.flag_fin = offset_reserved_flags & 1
         self.data = raw_data[offset:]
+
+    def __str__(self) -> str:
+        return f"\t Source Port : {self.src_port}\n\t Destination Port : {self.src_port}\n\t Sequence : {self.sequence}\n\t Acknowledgment : {self.acknowledgment}\n"
+
+    def show_flags(self) -> str:
+        return f"\t Flags Urg :{self.flag_urg}\n\t Ack : {self.flag_ack}\n\t Psh : {self.flag_psh}\n\t Rst : {self.flag_rst}\n\t Syn : {self.flag_syn}\n\t Fin : {self.flag_fin}\n"
