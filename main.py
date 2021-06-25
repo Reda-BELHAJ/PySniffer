@@ -8,6 +8,14 @@ from Networking.Icmp import Icmp
 from Networking.Tcp import Tcp
 from Networking.Udp import Udp
 
+def format_multi_line(prefix, string, size=80):
+    size -= len(prefix)
+    if isinstance(string, bytes):
+        string = ''.join(r'\x{:02x}'.format(byte) for byte in string)
+        if size % 2:
+            size -= 1
+    return '\n'.join([prefix + line for line in textwrap.wrap(string, size)])
+
 def main():
     conn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     conn.bind(('', 9999))
@@ -40,6 +48,9 @@ def main():
                 udp_head     = Udp(raw_data)
                 print("UDP Header :")
                 print(udp_head)
+            
+            else:
+                pass
         
 
 
