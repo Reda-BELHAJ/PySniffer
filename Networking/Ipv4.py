@@ -17,4 +17,4 @@ class Ipv4:
         return ".".join(map(str, addr))
 
     def __str__(self) -> str:
-        return f"\t Version : {self.version}\n\t Header_lenght :{self.header_lenght}\n\t TTL : {self.ttl}\n\t Prototype : {self.proto}\n\t Source : {self.src}\n\t Target : {self.target}\n"
+        return f"\t -Version : {self.version}\n\t -Header_lenght :{self.header_lenght}\n\t -TTL : {self.ttl}\n\t -Prototype : {self.proto}\n\t -Source : {self.src}\n\t -Target : {self.target}\n"

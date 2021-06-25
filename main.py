@@ -1,6 +1,5 @@
 from Networking.Ethernet import Ethernet
 import socket 
-import struct
 import textwrap
 from Networking.Ethernet import Ethernet
 from Networking.Ipv4 import Ipv4
@@ -8,13 +7,12 @@ from Networking.Icmp import Icmp
 from Networking.Tcp import Tcp
 from Networking.Udp import Udp
 
-def format_multi_line(prefix, string, size=80):
-    size -= len(prefix)
+def format_multi_line(string, size=80):
     if isinstance(string, bytes):
         string = ''.join(r'\x{:02x}'.format(byte) for byte in string)
         if size % 2:
             size -= 1
-    return '\n'.join([prefix + line for line in textwrap.wrap(string, size)])
+    return '\n'.join([line for line in textwrap.wrap(string, size)])
 
 def main():
     conn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -50,7 +48,10 @@ def main():
                 print(udp_head)
             
             else:
-                pass
+                print("\t " + format_multi_line(ethernet_head.data) + "\n")
+        
+        else:
+            print("\t " + format_multi_line(ethernet_head.data) + "\n")
         
 
 

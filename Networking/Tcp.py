@@ -14,7 +14,7 @@ class Tcp:
         self.data = raw_data[offset:]
 
     def __str__(self) -> str:
-        return f"\t Source Port : {self.src_port}\n\t Destination Port : {self.src_port}\n\t Sequence : {self.sequence}\n\t Acknowledgment : {self.acknowledgment}\n"
+        return f"\t -Source Port : {self.src_port}\n\t -Destination Port : {self.src_port}\n\t -Sequence : {self.sequence}\n\t -Acknowledgment : {self.acknowledgment}\n"
 
     def show_flags(self) -> str:
-        return f"\t Flags Urg :{self.flag_urg}\n\t Ack : {self.flag_ack}\n\t Psh : {self.flag_psh}\n\t Rst : {self.flag_rst}\n\t Syn : {self.flag_syn}\n\t Fin : {self.flag_fin}\n"
+        return f"\t -Flags Urg :{self.flag_urg}\n\t\t -Ack : {self.flag_ack}\n\t\t -Psh : {self.flag_psh}\n\t\t -Rst : {self.flag_rst}\n\t\t -Syn : {self.flag_syn}\n\t\t -Fin : {self.flag_fin}\n"

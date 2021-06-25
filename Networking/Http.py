@@ -6,5 +6,3 @@ class HTTP:
         except:
             self.data = raw_data
         
-    def __str__(self) -> str:
-        pass

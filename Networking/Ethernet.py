@@ -17,4 +17,4 @@ class Ethernet:
         return ":".join(bytes_str).upper()
     
     def __str__(self) -> str:
-        return f"\t Destination :{self.dest_mac}\n\t Source :{self.src_mac}\n\t Prototype : {self.proto} \n"
+        return f"\t -Destination :{self.dest_mac}\n\t -Source :{self.src_mac}\n\t -Prototype : {self.proto} \n"
