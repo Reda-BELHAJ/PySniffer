@@ -30,6 +30,23 @@ def ipv4(addr):
     return ".".join(map(str, addr))
 
 
+def icmp_packet(raw_data):
+    icmp_type, code, checksum = struct.unpack('! B B H',raw_data[:4])
+    return icmp_type, code, checksum, raw_data[4:]
+
+def tcp_packet(raw_data):
+    src_port, dest_port, sequence, acknowledgment, offset_reserved_flags = struct.unpack('! H H L L H',raw_data[:14])
+    offset = (offset_reserved_flags >> 12) * 4
+    flag_urg = (offset_reserved_flags & 32) >> 5
+    flag_ack = (offset_reserved_flags & 16) >> 5
+    flag_psh = (offset_reserved_flags & 8) >> 5
+    flag_rst = (offset_reserved_flags & 4) >> 5
+    flag_syn = (offset_reserved_flags & 2) >> 5
+    flag_fin = offset_reserved_flags & 1
+
+    return src_port, dest_port, sequence, acknowledgment, offset, flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin
+
+
 def main():
     conn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     conn.bind(('', 9999))
@@ -47,6 +64,11 @@ def main():
         print(f"\t Version: {version}\n\t Header_lenght :{header_lenght}\n\t TTL : {ttl}\n\t"
          f" Prototype : {prototype}\n\t Source : {src}\n\t Target : {target}\n")
 
+
+# Need to create for each packet sniffer a class and also create folder to upload schemas of packets.
+# Ideas : https://github.com/molansec/PassiveScanner/tree/fe8fc3a9465367d5440c1c1927a62386756cb371
+# https://www.youtube.com/watch?v=3zwuOo7U1YQ&ab_channel=thenewboston
+# https://www.uv.mx/personal/angelperez/files/2018/10/sniffers_texto.pdf
 
 if __name__ == '__main__':
     main()
