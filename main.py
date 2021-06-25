@@ -36,9 +36,6 @@ def main():
 
 
 # Need to create for each packet sniffer a class and also create folder to upload schemas of packets.
-# Ideas : https://github.com/molansec/PassiveScanner/tree/fe8fc3a9465367d5440c1c1927a62386756cb371
-# https://www.youtube.com/watch?v=3zwuOo7U1YQ&ab_channel=thenewboston
-# https://www.uv.mx/personal/angelperez/files/2018/10/sniffers_texto.pdf
 
 if __name__ == '__main__':
     main()
