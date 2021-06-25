@@ -8,4 +8,4 @@ class UDP:
         self.data = raw_data[8:]
     
     def __str__(self) -> str:
-        pass
+        return f"\t Destination :{self.dest_mac}\n\t Source :{self.src_mac}\n\t Size : {self.size} \n"
